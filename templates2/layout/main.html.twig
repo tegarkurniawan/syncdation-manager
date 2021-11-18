@@ -1,0 +1,43 @@
+{% apply spaceless %}
+    <!DOCTYPE html>
+    <html lang="en">
+    {% include 'layout/head.html.twig' with {stylesheets: block('stylesheets')}  %}
+    <body class="page-container-bg-solid page-header-fixed page-footer-fixed page-sidebar-closed-hide-logo page-md">
+        {% include 'layout/navigation.html.twig' %}
+        <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-sidebar-wrapper">
+                <!-- BEGIN SIDEBAR -->
+                <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                <div class="page-sidebar navbar-collapse collapse">
+                 <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                        <li class="nav-item ">
+                            <a href="{{ path('admin_home') }}" class="nav-link">
+                                <i class="icon-home"></i>
+                                <span class="title">Dashboard</span>
+                                
+                            </a>
+                        </li>
+                        {{ render_menu() | raw }}
+                        <li class="nav-item start ">
+                            <a href="{{ path('app.swagger_ui') }}" class="nav-link" target="_blank">
+                                <i class="icon-book cil-book"></i>
+                                <span class="title">Dokumentasi API</span>
+                                
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- END SIDEBAR MENU -->
+                </div>
+                <!-- END SIDEBAR -->
+            </div>
+        {% include 'layout/content.html.twig' with {content: block('content')} %}
+        </div>
+        {% include 'layout/footer.html.twig' %}
+
+    </div>
+    {% include 'layout/javascript.html.twig' with {javascripts: block('javascripts')} %}
+    </body>
+    </html>
+{% endapply %}

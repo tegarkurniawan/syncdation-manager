@@ -1,0 +1,94 @@
+{% extends 'layout/main.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
+                                <div class="visual">
+                                    <i class="fa fa-comments"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">
+                                        <span data-counter="counterup" >{{ node | number_format(0, ',', '.') }}</span>
+                                    </div>
+                                    <div class="desc"> Node </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <a class="dashboard-stat dashboard-stat-v2 red" href="#">
+                                <div class="visual">
+                                    <i class="fa fa-bar-chart-o"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">
+                                        <span data-counter="counterup" >{{ service | number_format(0, ',', '.') }}</span></div>
+                                    <div class="desc"> Servis </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <a class="dashboard-stat dashboard-stat-v2 green" href="#">
+                                <div class="visual">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">
+                                        <span data-counter="counterup">{{ endpoint | number_format(0, ',', '.') }}</span>
+                                    </div>
+                                    <div class="desc"> Endpoint </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
+                                <div class="visual">
+                                    <i class="fa fa-globe"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number"> +
+                                        <span data-counter="counterup" >{{ uptime | number_format(2, ',', '.') }}</span>% </div>
+                                    <div class="desc"> Uptime </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {% apply spaceless %}
+        <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
+        <script>
+            $(document).ready(function () {
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+
+
+                {% for message in app.flashes('info') %}
+                    toastr['success']('{{ message | trans({}, 'pages') }}');
+                {% endfor %}
+                {% for message in app.flashes('error') %}
+                    toastr['error']('{{ message | trans({}, 'pages') }}');
+                {% endfor %}
+            });
+        </script>
+    {% endapply %}
+{% endblock %}

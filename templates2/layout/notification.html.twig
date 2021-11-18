@@ -1,0 +1,21 @@
+{% apply spaceless %}
+ {% set user = app.user %}
+            {% set group = user.group %}
+ <li class="dropdown dropdown-user dropdown-dark">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <span class="username username-hide-on-mobile">{{ user.username | humanize }} </span>
+                                    <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
+                                    <img alt="" class="img-circle" src="{% if user.profileImage %}{{ '/admin' ~ sas.media_prefix ~ user.profileImage }}{% else %}{{ asset('dist/img/avatar5.png') }}{% endif %}" /> </a>
+                                <ul class="dropdown-menu dropdown-menu-default">
+                                    <li>
+                                        <a href="{{ path('KejawenLab\\ApiSkeleton\\Admin\\Controller\\Me\\Profile') }}">
+                                            <i class="icon-user"></i> My Profile </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('admin_logout') }}">
+                                            <i class="icon-key"></i> Log Out </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+{% endapply %}

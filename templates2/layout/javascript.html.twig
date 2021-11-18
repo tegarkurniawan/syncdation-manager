@@ -1,0 +1,31 @@
+{% apply spaceless %}
+     <script src="{{ preload(asset('assets/global/plugins/jquery.min.js'), {as: 'javascript'}) }}" type="text/javascript"></script>
+        <script src="{{ preload(asset('assets/global/plugins/bootstrap/js/bootstrap.min.js'), {as: 'javascript'}) }}" type="text/javascript"></script>
+        <script src="{{ preload(asset('assets/global/plugins/js.cookie.min.js'), {as: 'javascript'}) }}" type="text/javascript"></script>
+        <script src="{{ preload(asset('assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js'), {as: 'javascript'}) }}" type="text/javascript"></script>
+        <script src="{{ preload(asset('assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js'), {as: 'javascript'}) }}" type="text/javascript"></script>
+        <script src="{{ preload(asset('assets/global/plugins/jquery.blockui.min.js'), {as: 'javascript'}) }}" type="text/javascript"></script>
+        <script src="{{ preload(asset('assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js'), {as: 'javascript'}) }}" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="{{ preload(asset('assets/global/scripts/app.min.js'), {as: 'javascript'}) }}" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src="{{ preload(asset('assets/layouts/layout4/scripts/layout.min.js'), {as: 'javascript'}) }}" type="text/javascript"></script>
+        <script src="{{ preload(asset('assets/layouts/layout4/scripts/demo.min.js'), {as: 'javascript'}) }}" type="text/javascript"></script>
+        <script src="{{ preload(asset('assets/layouts/global/scripts/quick-sidebar.min.js'), {as: 'javascript'}) }}" type="text/javascript"></script>
+        
+    
+    {{ javascripts | raw }}
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'), results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+    </script>
+{% endapply %}

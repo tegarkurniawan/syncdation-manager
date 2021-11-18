@@ -1,0 +1,37 @@
+{% apply spaceless %}
+<div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                    <!-- BEGIN PAGE HEAD-->
+                    <div class="page-head">
+                        <!-- BEGIN PAGE TITLE -->
+                        <div class="page-title">
+                            <h1>{{ page_title | trans({}, 'pages') }}</h1>
+                        </div>
+                        <!-- END PAGE TITLE -->
+                        <!-- BEGIN PAGE TOOLBAR -->
+                       
+                        <!-- END PAGE TOOLBAR -->
+                    </div>
+                    <!-- END PAGE HEAD-->
+                    <!-- BEGIN PAGE BREADCRUMB -->
+                    <ul class="page-breadcrumb breadcrumb">
+                        <li>
+                            <a href="{{ path('admin_home') }}">{{ sas.app_description }}</a>
+                            <i class="fa fa-circle"></i>
+                        </li>
+                        <li>
+                            <span class="active">{{ page_title | trans({}, 'pages') }}</span>
+                        </li>
+                    </ul>
+                    <!-- END PAGE BREADCRUMB -->
+                    <!-- BEGIN PAGE BASE CONTENT -->
+                   {{ content | raw }}
+                    <!-- END PAGE BASE CONTENT -->
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
+{% endapply %}
